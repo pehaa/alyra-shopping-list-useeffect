@@ -58,11 +58,15 @@ useEffect(() => {
 
 Nous allons ensuite besoin de la valeur stockée dans localStorage pour la passer en tant que la valeur initiale de `shopping` :
 
-`const [shopping, setShopping] = useState( /* ici !! */ )`
+```javascript
+const [shopping, setShopping] = useState( /* ici !! */ )`
+```
 
 Alors :
 
-`const [shopping, setShopping] = useState( JSON.parse(localStorage.getItem('myShoppingList')) || [] )`
+```javascript
+const [shopping, setShopping] = useState( JSON.parse(localStorage.getItem('myShoppingList')) || [] )
+```
 
 La valeur initiale de shopping est utilisée uniquement une fois, au moment ou le component monte. Néanmoins, l'expression `JSON.parse(localStorage.getItem('myShoppingList')) || []` sera évaluée à chaque render. Pour y rémédier et améliorer la performance (l'échange avec `localStorage` peuvent être coûteuse au niveau de la performance), nous allons passer une fonction dans `useState` :
 
